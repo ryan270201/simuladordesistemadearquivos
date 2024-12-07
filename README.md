@@ -1,4 +1,5 @@
 Metodologia
+
 Vamos desenvolver um simulador em Java. Ele vai receber comandos com os parâmetros necessários e oferecer as funcionalidades que precisamos para cada um deles. À medida que o programa executa essas tarefas, ele também mostrará os resultados na tela.
 
 Parte 1: Introdução ao Sistema de Arquivos com Journaling
