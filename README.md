@@ -1,34 +1,21 @@
-# simuladordesistemadearquivos
+Metodologia
+O simulador será desenvolvido em Java. Ele receberá chamadas de métodos pelos respectivos parâmetros e executará as funcionalidades necessárias para cada comando. O programa executará cada uma das funcionalidades e exibirá seus resultados na tela.
 
-### Metodologia
-O simulador será desenvolvido em Java. Ele receberá chamadas de métodos com os parâmetros correspondentes e implementará as funcionalidades requeridas para cada comando. O programa executará cada funcionalidade e exibirá os resultados na tela.
+Parte 1: Introdução ao sistema de arquivos de registro em diário
+Descrição do sistema de arquivos: Um sistema de arquivos é responsável por organizar, armazenar, recuperar e manipular dados em um dispositivo de armazenamento. Ele fornece maneiras estruturadas de armazenar e acessar arquivos de maneira eficiente e segura.
 
-### Parte 1: Introdução ao Sistema de Arquivos com Journaling
+Registro no diário: O registro no diário é uma técnica de sistema de arquivos que mantém os dados intactos; mantém registros (diário) de todas as operações realizadas e os utiliza para restaurar o sistema em caso de falha. Existem diferentes tipos de registro no diário, como registro write-ahead e registro estruturado, que são diferentes em suas especificidades.
 
-**Descrição do sistema de arquivos:**
-Um sistema de arquivos é responsável pela organização, armazenamento, recuperação e manipulação de dados em um dispositivo de armazenamento. Ele fornece uma maneira estruturada de armazenar e acessar arquivos de forma eficiente e segura.
+Parte 2: Arquitetura do Simulador
+Estruturas de dados: O sistema de arquivos será representado como classes em Java que modelam arquivos e diretórios e o próprio sistema de arquivos. As aulas principais incluem:
 
-**Journaling:**
-O journaling é uma técnica utilizada em sistemas de arquivos para garantir a integridade dos dados. Consiste em manter um log (jornal) de todas as operações realizadas, permitindo a recuperação do sistema em caso de falhas. Existem diferentes tipos de journaling, como o write-ahead logging e o log-structured, cada um com suas particularidades.
+Arquivo: Esta classe representa um arquivo.
+Diretório: representa um diretório que contém arquivos e subdiretórios.
+Diário: cuida do log das operações realizadas no sistema de arquivos.
+Journaling: O Journaling será implementado pela classe Journal, que manterá um log de todas as operações realizadas (criação, remoção, renomeação de arquivos e diretórios). Isto, por sua vez, garantirá a integridade dos dados e a possibilidade de recuperação em caso de falha.
 
-### Parte 2: Arquitetura do Simulador
+Parte 3: Classe de Implementação Java: FileSystemSimulator Implementa o simulador do sistema de arquivos, com métodos para cada operação. Recebe comandos do usuário e executa a operação correspondente, que é, naturalmente, registrada no jornal.
 
-**Estrutura de Dados:**
-O sistema de arquivos será representado por classes Java que modelam arquivos, diretórios e o próprio sistema de arquivos. As principais classes são:
-- **File**: Representa um arquivo.
-- **Directory**: Representa um diretório e contém arquivos e subdiretórios.
-- **Journal**: Gerencia o log de operações realizadas no sistema de arquivos.
+Classes Arquivo e Diretório: Representa um arquivo e um diretório, respectivamente. Inclui métodos para manipulação (criando, removendo, renomeando) de arquivos e diretórios.
 
-**Journaling:**
-O journaling será implementado através da classe `Journal`, que manterá um registro de todas as operações realizadas (criação, remoção, renomeação de arquivos e diretórios). Isso garantirá a integridade dos dados e permitirá a recuperação em caso de falhas.
-
-### Parte 3: Implementação em Java
-
-**Classe `FileSystemSimulator`:**
-Implementa o simulador do sistema de arquivos, incluindo métodos para cada operação. Recebe comandos do usuário e executa as operações correspondentes, registrando-as no journal.
-
-**Classes `File` e `Directory`:**
-Representam arquivos e diretórios, respectivamente. Incluem métodos para manipulação (adicionar, remover, renomear) de arquivos e diretórios.
-
-**Classe `Journal`:**
-Gerencia o log de operações realizadas no sistema de arquivos. Inclui métodos para registrar operações e exibir o log.
+Classe Journal: Trata do log de todas as operações realizadas no sistema de arquivos. Inclui métodos para operações de registrador e exibição de log.
