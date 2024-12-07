@@ -1,0 +1,12 @@
+class Journal {
+    private List<String> log = new ArrayList<>();
+
+    public void logOperation(String operation) {
+        log.add(operation);
+    }
+
+    public void displayLog() {
+        System.out.println("Log de operações:");
+        log.forEach(System.out::println);
+    }
+}
