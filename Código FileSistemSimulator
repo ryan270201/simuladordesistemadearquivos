@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class FileSystemSimulator {
+    private static Directory root = new Directory("root");
+    private static Journal journal = new Journal();
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String command;
+        System.out.println("Simulador de Sistema de Arquivos");
+        System.out.println("Comandos: copiar, apagar, renomear, criar_dir, apagar_dir, renomear_dir, listar, log, sair");
+
+        while (true) {
+            System.out.print("Digite um comando: ");
+            command = scanner.nextLine();
+
+            if (command.equals("sair")) break;
+
+            switch (command) {
+                case "copiar":
+                    System.out.print("Digite o nome do arquivo para copiar: ");
+                    String fileToCopy = scanner.nextLine();
+                    System.out.print("Digite o novo nome do arquivo: ");
+                    String newFileName = scanner.nextLine();
+                    root.addFile(new File(newFileName));
+                    journal.logOperation("Arquivo copiado: " + fileToCopy + " para " + newFileName);
+                    System.out.println("Arquivo copiado.");
+                    break;
+                case "apagar":
+                    System.out.print("Digite o nome do arquivo para apagar: ");
+                    String fileToDelete = scanner.nextLine();
+                    root.removeFile(fileToDelete);
+                    journal.logOperation("Arquivo apagado: " + fileToDelete);
+                    System.out.println("Arquivo apagado.");
+                    break;
+                case "renomear":
+                    System.out.print("Digite o nome do arquivo a ser renomeado: ");
+                    String oldFileName = scanner.nextLine();
+                    System.out.print("Digite o novo nome do arquivo: ");
+                    String renamedFileName = scanner.nextLine();
+                    root.renameFile(oldFileName, renamedFileName);
+                    journal.logOperation("Arquivo renomeado: " + oldFileName + " para " + renamedFileName);
+                    System.out.println("Arquivo renomeado.");
+                    break;
+                case "criar_dir":
+                    System.out.print("Digite o nome do diretório a ser criado: ");
+                    String dirName = scanner.nextLine();
+                    root.addDirectory(new Directory(dirName));
+                    journal.logOperation("Diretório criado: " + dirName);
+                    System.out.println("Diretório criado.");
+                    break;
+                case "apagar_dir":
+                    System.out.print("
