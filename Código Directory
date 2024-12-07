@@ -1,0 +1,55 @@
+class Directory {
+    private String name;
+    private Map<String, File> files = new HashMap<>();
+    private Map<String, Directory> subDirectories = new HashMap<>();
+
+    public Directory(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void addFile(File file) {
+        files.put(file.getName(), file);
+    }
+
+    public void removeFile(String fileName) {
+        files.remove(fileName);
+    }
+
+    public void renameFile(String oldName, String newName) {
+        File file = files.remove(oldName);
+        if (file != null) {
+            file.setName(newName);
+            files.put(newName, file);
+        }
+    }
+
+    public void addDirectory(Directory directory) {
+        subDirectories.put(directory.getName(), directory);
+    }
+
+    public void removeDirectory(String dirName) {
+        subDirectories.remove(dirName);
+    }
+
+    public void renameDirectory(String oldName, String newName) {
+        Directory dir = subDirectories.remove(oldName);
+        if (dir != null) {
+            dir.setName(newName);
+            subDirectories.put(newName, dir);
+        }
+    }
+
+    public void listContents() {
+        System.out.println("Conteúdo do diretório " + name + ":");
+        files.values().forEach(file -> System.out.println("- Arquivo: " + file.getName()));
+        subDirectories.values().forEach(dir -> System.out.println("Diretório: " + dir.getName()));
+    }
+}
